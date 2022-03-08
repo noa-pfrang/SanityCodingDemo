@@ -1,11 +1,11 @@
 {
   "root": true,
+  "api": {
+    "projectId": "5wquo6hj",
+    "dataset": "production"
+  },
   "project": {
     "name": "SanityCodingDemo"
-  },
-  "api": {
-    "projectId": "ci94q5up",
-    "dataset": "production"
   },
   "plugins": [
     "@sanity/base",
@@ -17,12 +17,19 @@
     "seo-pane",
     "dashboard-widget-structure-menu",
     "dashboard-widget-document-list",
-    "iframe-pane"
+    "iframe-pane",
+    "media",
+    "asset-source-unsplash",
+    "leaflet-input",
+    "@sanity/dashboard",
+    "my-dashboard-widget",
+    "hotdog-stand"
   ],
   "env": {
     "development": {
       "plugins": [
-        "@sanity/vision"
+        "@sanity/vision",
+        "leaflet-input"
       ]
     }
   },
@@ -38,6 +45,18 @@
     {
       "implements": "part:@sanity/production-preview/resolve-production-url",
       "path": "./resolveProductionUrl.js"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input/image/asset-sources",
+      "path": "./parts/assetSources.js"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input/file/asset-sources",
+      "path": "./parts/assetSources.js"
+    },
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "./dashboardConfig.js"
     }
   ]
 }
